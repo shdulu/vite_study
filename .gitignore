@@ -4,3 +4,4 @@ pnpm-debug.log*
 sh.exe.stackdump
 dist
 coverage
+package-lock.json
