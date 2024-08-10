@@ -8,8 +8,8 @@
       "sourceMap": true, // 把 ts 文件编译成 js 文件的时候，同时生成对应的 sourceMap 文件
       "esModuleInterop": true, // 为导入内容创建命名空间,实现 CommonJS 和 ES 模块之间的互相访问
       "lib": ["esnext", "dom", "es2018.promise"], // 编译时引入的 ES 功能库，包括：es5 、es6、es7、dom 等。如果未设置，则默认为： target 为 es5 时: ["dom", "es5", "scripthost"] target 为 es6 时: ["dom", "es6", "dom.iterable", "scripthost"]
-      "baseUrl": ".",
-      "paths": {
+      "baseUrl": ".", // 指向当前目录
+      "paths": { // 添加paths -> 别名会基于 baseUrl 查找别名路径
         "@/*": ["src/*"]
       }
     },

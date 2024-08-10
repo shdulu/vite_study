@@ -54,6 +54,12 @@ img {
   width: 100px;
   height: 100px;
 }
+.postcss {
+  height: 30px;
+  width: 60px;
+  background-color: orange;
+  transform: rotate(25deg);
+}
 </style>
 <style module>
 .link {
@@ -61,22 +67,12 @@ img {
 }
 </style>
 <style scoped lang="less">
-@color: red;
 h2 {
-  color: @color;
+  color: @red;
 }
 </style>
 <style scoped lang="scss">
-$color: green;
 h3 {
-  color: $color;
-}
-</style>
-<style scoped>
-.postcss {
-  height: 30px;
-  width: 60px;
-  background-color: orange;
-  transform: rotate(25deg);
+  color: $green;
 }
 </style>
