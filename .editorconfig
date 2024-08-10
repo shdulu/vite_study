@@ -1,3 +1,8 @@
+# 设置编译器风格
+# Unix 系统里，每行结尾只有换行,即\n LF(Line Feed)
+# Windows 系统里面，每行结尾是换行 回车，即\r\n CR/LF
+# Mac 系统里，每行结尾是回车，即\r CR(Carriage Return)
+
 root = true
 
 [*]

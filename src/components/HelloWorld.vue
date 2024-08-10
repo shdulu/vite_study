@@ -1,30 +1,3 @@
-<script setup lang="ts">
-import { ref } from "vue"
-import logoUrl from "../assets/logo.png"
-import style from "./HelloWorld.module.css"
-import { useMainStore } from "@/store"
-import { storeToRefs } from "pinia"
-defineProps<{ msg: string }>()
-const count = ref(0)
-const mainStore = useMainStore()
-//const storeCount = mainStore.count
-const { count: storeCount } = storeToRefs(mainStore)
-const add = () => {
-  //适合多字段改变
-  mainStore.$patch({
-    name: "arch",
-    count: mainStore.count + 1
-  })
-}
-const add2 = () => {
-  //适合多字段改变
-  mainStore.$patch((state) => ({
-    name: "arch2",
-    count: mainStore.count + 2
-  }))
-}
-</script>
-
 <template>
   <h1>{{ msg }}</h1>
   <img :src="logoUrl" />
@@ -46,6 +19,35 @@ const add2 = () => {
     <p>name:{{ mainStore.name }}</p>
   </div>
 </template>
+
+<script setup lang="ts">
+import { ref } from "vue"
+import logoUrl from "../assets/logo.png"
+import style from "./HelloWorld.module.css"
+import { useMainStore } from "@/store"
+import { storeToRefs } from "pinia"
+
+// <script setup> 的单文件组件中，props 可以使用 defineProps() 宏来声明
+defineProps<{ msg: string }>()
+
+const count = ref(0)
+const mainStore = useMainStore()
+const { count: storeCount } = storeToRefs(mainStore)
+const add = () => {
+  //适合多字段改变
+  mainStore.$patch({
+    name: "arch",
+    count: mainStore.count + 1
+  })
+}
+const add2 = () => {
+  //适合多字段改变
+  mainStore.$patch((state) => ({
+    name: "arch2",
+    count: mainStore.count + 2
+  }))
+}
+</script>
 
 <style scoped>
 img {

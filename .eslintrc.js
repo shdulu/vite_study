@@ -5,7 +5,6 @@ module.exports = {
     es2021: true,
     node: true
   },
-
   extends: [
     "plugin:vue/vue3-recommended",
     "eslint:recommended",
@@ -34,6 +33,7 @@ module.exports = {
     "@typescript-eslint/no-unused-vars": "off"
   },
   globals: {
+    // 定义全局变量
     defineProps: "readonly"
   }
 }
