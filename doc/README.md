@@ -52,7 +52,7 @@ node_modules\.vite\deps 缓存依赖的资源包，已经构建好的，本地�
    - EditorConfig
    - vscode 这类编辑器，需要自行安装 editorconfig 插件
 
-8. git hooks
+#### 8. git hooks
 
 - 可以在 `git commit` 之前检查代码，保证所有提交到版本库中的代码都是符合规范的
 - 可以在 `git push` 之前执行单元测试,保证所有的提交的代码经过的单元测试
@@ -60,3 +60,85 @@ node_modules\.vite\deps 缓存依赖的资源包，已经构建好的，本地�
 - [lint-staged](https://www.npmjs.com/package/lint-staged) 用于实现每次提交只检查本次提交所修改的文件
 - `mrm` 可以根据 `package.json` 依赖项中的代码质量工具来安装和配置 husky 和 lint-staged
 - Commitlint 可以规范 `git commit -m` ""中的描述信息
+
+##### 8.1 lint-staged
+
+mrm安装lint-staged的同时会安装husky
+
+```js
+pnpm install mrm -D
+npx mrm lint-staged
+```
+
+##### 8.2 commitlint
+
+- commitlint推荐我们使用onfig-conventional配置去写 commit
+- 提交格式 `git commit -m <type>[optional scope]: <description>`
+
+  - `type` ：用于表明我们这次提交的改动类型，是新增了功能？还是修改了测试代码？又或者是更新了文档？
+  - `optional scope`：一个可选的修改范围。用于标识此次提交主要涉及到代码中哪个模块
+  - `description`：一句话描述此次提交的主要内容，做到言简意赅
+
+  **type 类型**
+    <table>
+    <thead>
+    <tr>
+    <th style="text-align:left">类型</th>
+    <th style="text-align:left">描述</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    <td style="text-align:left">build</td>
+    <td style="text-align:left">编译相关的修改，例如发布版本、对项目构建或者依赖的改动</td>
+    </tr>
+    <tr>
+    <td style="text-align:left">chore</td>
+    <td style="text-align:left">其他修改, 比如改变构建流程、或者增加依赖库、工具等</td>
+    </tr>
+    <tr>
+    <td style="text-align:left">ci</td>
+    <td style="text-align:left">持续集成修改</td>
+    </tr>
+    <tr>
+    <td style="text-align:left">docs</td>
+    <td style="text-align:left">文档修改</td>
+    </tr>
+    <tr>
+    <td style="text-align:left">feature</td>
+    <td style="text-align:left">新特性、新功能</td>
+    </tr>
+    <tr>
+    <td style="text-align:left">fix</td>
+    <td style="text-align:left">修改 bug</td>
+    </tr>
+    <tr>
+    <td style="text-align:left">perf</td>
+    <td style="text-align:left">优化相关，比如提升性能、体验</td>
+    </tr>
+    <tr>
+    <td style="text-align:left">refactor</td>
+    <td style="text-align:left">代码重构</td>
+    </tr>
+    <tr>
+    <td style="text-align:left">revert</td>
+    <td style="text-align:left">回滚到上一个版本</td>
+    </tr>
+    <tr>
+    <td style="text-align:left">style</td>
+    <td style="text-align:left">代码格式修改</td>
+    </tr>
+    <tr>
+    <td style="text-align:left">test</td>
+    <td style="text-align:left">测试用例修改</td>
+    </tr>
+    </tbody>
+    </table>
+
+**8.2.2 安装**
+
+`pnpm install @commitlint/cli @commitlint/config-conventional -D`
+
+**8.2.3 配置**
+
+`npx husky add .husky/commit-msg "npx --no-install commitlint --edit $1"`
