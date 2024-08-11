@@ -1,16 +1,18 @@
 /// <reference types="vitest" />
 
 import { resolve } from "path"
-import { defineConfig } from "vite"
+import { defineConfig, Plugin } from "vite"
 import vue from "@vitejs/plugin-vue"
+import tsconfigPaths from "vite-tsconfig-paths"
 import { viteMockServe } from "vite-plugin-mock"
+const plugins: Array<Plugin> = [vue(), viteMockServe(), tsconfigPaths()]
 export default defineConfig({
+  plugins,
   resolve: {
     alias: {
       "@": resolve("src")
     }
   },
-  plugins: [vue(), viteMockServe()],
   css: {
     preprocessorOptions: {
       scss: {
@@ -23,10 +25,14 @@ export default defineConfig({
     }
   },
   test: {
+    server: {
+      deps: {
+        inline: ["date-fns"]
+      }
+    },
     // 启用类似 jest 的全局测试 API
     globals: true,
     // 使用 happy-dom 模拟 DOM
-    // 这需要你安装 happy-dom 作为对等依赖（peer dependency）
     environment: "happy-dom",
     coverage: {
       all: true, // 是否对所有文件生成覆盖率报告，即使没有被测试
