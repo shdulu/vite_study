@@ -1,3 +1,3 @@
 <template>
-  <form>用户名 <input /></form>
+  <h3>this is login page</h3>
 </template>

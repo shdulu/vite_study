@@ -1,7 +1,7 @@
 {
   "name": "vite_study",
   "version": "1.0.0",
-  "description": "",
+  "description": "vue3 实践",
   "main": "index.js",
   "scripts": {
     "dev": "vite",
@@ -9,7 +9,10 @@
     "build:prod": "vue-tsc --noEmit && vite build --mode production",
     "lint": "eslint --ext .ts,.tsx,vue src/** --no-error-on-unmatched-pattern --quiet",
     "lint:fix": "eslint --ext .ts,.tsx,vue src/** --no-error-on-unmatched-pattern --quiet --fix",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "test": "vitest run --silent",
+    "test:watch": "vitest",
+    "coverage": "npm run test -- --coverage"
   },
   "keywords": [],
   "author": "",
@@ -17,16 +20,22 @@
   "devDependencies": {
     "@commitlint/cli": "^19.4.0",
     "@commitlint/config-conventional": "^19.2.2",
+    "@pinia/testing": "^0.1.5",
+    "@testing-library/vue": "^8.1.0",
     "@types/node": "^22.1.0",
     "@typescript-eslint/eslint-plugin": "^8.0.1",
     "@typescript-eslint/parser": "^8.0.1",
     "@vitejs/plugin-vue": "^5.1.2",
+    "@vitest/coverage-v8": "^2.0.5",
+    "@vitest/ui": "^2.0.5",
     "@vue/eslint-config-prettier": "^9.0.0",
     "@vue/eslint-config-typescript": "^13.0.0",
+    "@vue/test-utils": "^2.4.6",
     "autoprefixer": "^10.4.20",
     "eslint": "^8.57.0",
     "eslint-plugin-prettier": "^5.2.1",
     "eslint-plugin-vue": "^9.27.0",
+    "happy-dom": "^14.12.3",
     "husky": "^9.1.4",
     "less": "^4.2.0",
     "lint-staged": "^15.2.8",
@@ -37,6 +46,7 @@
     "typescript": "^5.5.4",
     "vite": "^5.4.0",
     "vite-plugin-mock": "^3.0.2",
+    "vitest": "^2.0.5",
     "vue-tsc": "^2.0.29"
   },
   "dependencies": {

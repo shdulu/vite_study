@@ -1,17 +1,28 @@
 {
     "compilerOptions": {
+      "outDir": "./dist",
+      "skipLibCheck": true,
       "target": "esnext", // 指定编译之后的版本目标
+      "useDefineForClassFields": true,
       "module": "esnext", // 生成的模块形式：none、commonjs、amd、system、umd、es6、es2015 或 esnext 只有 amd 和 system 能和 outFile 一起使用 target 为 es5 或更低时可用 es6 和 es2015
       "moduleResolution": "node", // 选择模块解析策略，有 node 和 classic 两种类型 module-resolution
       "strict": true, // 是否启动所有类型检查
       "jsx": "preserve", // react 模式会生成 React.createElement，在使用前不需要再进行转换操作了，输出文件的扩展名为.js
+      "allowJs": true,
+      "checkJs": true,
+      "noImplicitAny": false,
+      "importHelpers": true,
       "sourceMap": true, // 把 ts 文件编译成 js 文件的时候，同时生成对应的 sourceMap 文件
+      "experimentalDecorators": true,
       "esModuleInterop": true, // 为导入内容创建命名空间,实现 CommonJS 和 ES 模块之间的互相访问
+      "allowSyntheticDefaultImports": true,
       "lib": ["esnext", "dom", "es2018.promise"], // 编译时引入的 ES 功能库，包括：es5 、es6、es7、dom 等。如果未设置，则默认为： target 为 es5 时: ["dom", "es5", "scripthost"] target 为 es6 时: ["dom", "es6", "dom.iterable", "scripthost"]
       "baseUrl": ".", // 指向当前目录
       "paths": { // 添加paths -> 别名会基于 baseUrl 查找别名路径
         "@/*": ["src/*"]
-      }
+      },
+      "types": ["vitest/globals", "vite/client", "naive-ui/volar", "node"]
     },
-    "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"] // include 也可以指定要编译的路径列表，但是和 files 的区别在于，这里的路径可以是文件夹，也可以是文件
+    "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"], // include 也可以指定要编译的路径列表，但是和 files 的区别在于，这里的路径可以是文件夹，也可以是文件
+    "exclude": ["node_modules/**/*", "dist/**/*"]
   }
