@@ -32,7 +32,13 @@ export default defineConfig({
       all: true, // 是否对所有文件生成覆盖率报告，即使没有被测试
       enabled: true,
       include: ["src/**/*.{vue,ts}"], // 包含哪些文件或路径进行覆盖率统计
-      exclude: ["*.config.{ts,js}", "**/*.d.ts", "src/typing", "dist", "test"],
+      exclude: [
+        "*.config.{ts,js}",
+        "**/*.d.ts",
+        "src/typing",
+        "src/App.vue",
+        "src/main.ts"
+      ],
       provider: "v8", // 使用 v8 作为覆盖率提供者 or istanbul
       reporter: ["text", "json", "html"],
       reportsDirectory: "./coverage", // 报告的输出目录
